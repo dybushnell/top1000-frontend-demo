@@ -16,8 +16,7 @@ class ComicContainer extends React.Component {
   };
 
   getComics = () => {
-    fetch("https://top1000-backend-postgres.herokuapp.com/api/v1/comics")
-      // fetch("http://localhost:4000/api/v1/comics")
+    fetch("https://top1000-backend-postgres-demo.herokuapp.com/api/v1/comics")
       .then(resp => resp.json())
       .then(data => this.setState({ allComics: data }))
       .then(this.sortAllComics);
@@ -64,8 +63,7 @@ class ComicContainer extends React.Component {
   //updates database so that removed comic is cancelled:true
   updateDBWithCancelledComic = cancelledComicId => {
     fetch(
-      `https://top1000-backend-postgres.herokuapp.com/api/v1/comics/${cancelledComicId}`,
-      // `http://localhost:4000/api/v1/comics/${cancelledComicId}`,
+      `https://top1000-backend-postgres-demo.herokuapp.com/api/v1/comics/${cancelledComicId}`,
       {
         method: "PATCH",
         headers: {
