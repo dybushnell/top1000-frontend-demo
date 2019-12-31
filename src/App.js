@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Route
+} from 'react-router-dom';
+import ComicContainer from "./containers/ComicContainer";
+import CancelContainer from "./containers/CancelContainer";
+import Header from "./components/Header";
+import HeaderCancel from "./components/HeaderCancel";
+import Footer from "./components/Footer";
+import FooterCancel from "./components/FooterCancel";
 
-function App() {
+import "./App.css";
+
+const App = () => {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <div className="appjs">
+        <Route exact path="/" render={() => (<div><Header bigText="Top 1000 Comedians of 2019!" /> <ComicContainer /> <Footer link="/cancelled" linkText="View Cancelled Comedians" /></div>)} />
+        <Route path="/cancelled" render={() => (<div><HeaderCancel bigText="Top Cancelled Comedians of 2019!" /> <CancelContainer /><FooterCancel link="/" linkText="View Top 1000 Comedians" /> </div>)} />
+      </div>
+
+
+
+    </Router>
+
+  )
+
 }
+
 
 export default App;
